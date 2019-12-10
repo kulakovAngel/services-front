@@ -5,17 +5,36 @@ import classes from './style.module.css';
 
 
 class Alert extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMinimize: false,
+    }
+  }
+  
+  handleToogleMinimize = () => {
+    this.setState( prevState => ({
+      isMinimize: !prevState.isMinimize
+    }));
+  }
+  
   render() {
     const { alert } = this.props;
+    const { isMinimize } = this.state;
     console.log('alert:');
     console.log(alert);
     return (
       <div className={ alert.type === 'error' ? classes.danger : classes.success }>
         <section>
-          <h5>{ alert.type }</h5>
-          <p>{ alert.message }</p>
+          <h5><span onClick={this.handleToogleMinimize}>&#9888;</span> { !isMinimize && alert.type }</h5>
+          {
+            !isMinimize && <p>{ alert.message }</p>
+          }
         </section>
-        <span className={classes.closeButton}>&times;</span>
+        {
+          !isMinimize && <span className={classes.closeButton} onClick={this.handleToogleMinimize}>&times;</span>
+        }
       </div>
     );
   }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { setPageTitle } from './../../helpers';
 
+import classes from './style.module.css';
+
 
 class Auth extends React.Component {
   constructor(props) {
@@ -36,7 +38,7 @@ class Auth extends React.Component {
   render() {
     const { login, password } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={ this.handleSubmit } className={ classes.form }>
         <input type='text' placeholder='login' value={ login } onChange={this.changeLoginField} />
         <input type='text' placeholder='password' value={ password } onChange={this.changePassField} />
         <input type='submit' value='Log In' />

@@ -1,0 +1,15 @@
+@value consts: './../../consts/theme.css';
+@value GAP2 from consts;
+
+.logo {
+  margin: GAP2;
+}
+
+.logo a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 64px;
+  line-height: 56px;
+}

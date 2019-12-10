@@ -1,3 +1,6 @@
+@value consts: './consts/theme.css';
+@value COLOR_PRIMARY from consts;
+
 .App {
   text-align: center;
 }
@@ -19,4 +22,8 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+body, a {
+  color: COLOR_PRIMARY;
 }

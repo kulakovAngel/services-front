@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 
 import NavBar from './../NavBar';
 
+import classes from './style.module.css';
+
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +15,7 @@ class Header extends React.Component {
     const { pageInfo, auth } = this.props;
     document.title = 'App - ' + pageInfo.title;
     return (
-      <header>
+      <header className={ classes.header }>
         <NavBar />
         { auth.name && <div>Hello, { auth.name }!</div> }
         <h1>{ pageInfo.title }</h1>

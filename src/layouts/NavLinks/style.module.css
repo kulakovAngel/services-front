@@ -1,3 +1,6 @@
+@value consts: './../../consts/theme.css';
+@value COLOR_PRIMARY, GAP2 from consts;
+
 .active {
   color: lightgreen;
 }
@@ -7,12 +10,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin: GAP2;
 }
 
 .navButton span {
   display: block;
   height: 2px;
-  background: #aaa;
+  background: COLOR_PRIMARY;
   margin: 6px 0;
   width: 100%;
   transition: 0.3s;

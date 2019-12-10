@@ -12,7 +12,7 @@ import PageHome from './pages/PageHome';
 import PageAbout from './pages/PageAbout';
 import PageAuth from './pages/PageAuth';
 
-import './App.css';
+import classes from './App.module.css';
 
 
 function App(props) {

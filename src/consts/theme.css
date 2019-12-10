@@ -1,1 +1,12 @@
+@value COLOR_PRIMARY: #f1f3f4;
+@value COLOR_SECONDARY: #281934;
+@value COLOR_WARNING: yellow;
+@value COLOR_DANGER: red;
+@value COLOR_SUCCESS: green;
+
+@value GAP1: 12px;
+@value GAP2: 18px;
+@value GAP3: 36px;
+@value GAP4: 48px;
+
 @value NAV_BUTTON_WIDTH: 48px;

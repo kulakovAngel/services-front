@@ -2,12 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import NavLinks from './../NavLinks';
+import Logotype from './../Logotype';
 
+import classes from './style.module.css';
 
 function NavBar() {
   return (
-    <nav>
+    <nav className={ classes.nav }>
       <NavLinks />
+      <Logotype />
     </nav>
   )
 }
