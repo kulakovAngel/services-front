@@ -1,0 +1,82 @@
+.active {
+  color: lightgreen;
+}
+
+.navButton {
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.navButton span {
+  display: block;
+  height: 2px;
+  background: #aaa;
+  margin: 6px 0;
+  width: 100%;
+  transition: 0.3s;
+  transform-origin: left center;
+}
+
+.navButton span:nth-child(2) {
+  width: 60%;
+}
+
+.navButton:hover span {
+  width: 100%;
+}
+
+.navButtonActive {
+  composes: navButton;
+}
+
+.navButtonActive span:nth-child(2){
+  transition: none;
+}
+
+.navButtonActive span:nth-child(1) {
+  transform: rotate(45deg) translateY(-4px);
+}
+
+.navButtonActive span:nth-child(2) {
+  visibility: hidden;
+}
+
+.navButtonActive span:nth-child(3) {
+  transform: rotate(-45deg) translateY(4px);
+}
+
+.container {
+  height: 10vh;
+}
+
+.linksContainer {
+  background-image: linear-gradient(45deg, #281934, #9477c9);
+/*  background-image: url('https://s14.stc.all.kpcdn.net/share/i/12/10497202/inx960x640.jpg');*/
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linksContainer li {
+  list-style: none;
+  margin: 12px;
+  font-size: 2rem;
+}
+
+.linksContainer li a {
+  display: block;
+  padding: 8px;
+  letter-spacing: 8px;
+  text-decoration: none;
+}
