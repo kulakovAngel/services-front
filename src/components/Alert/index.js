@@ -27,7 +27,7 @@ class Alert extends React.Component {
     return (
       <div className={ alert.type === 'error' ? classes.danger : classes.success }>
         <section>
-          <h5><span onClick={this.handleToogleMinimize}>&#9888;</span> { !isMinimize && alert.type }</h5>
+          <h5><span onClick={this.handleToogleMinimize}>&#9888;</span> { !isMinimize && alert.type.toUpperCase() }</h5>
           {
             !isMinimize && <p>{ alert.message }</p>
           }

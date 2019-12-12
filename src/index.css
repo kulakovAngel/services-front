@@ -9,6 +9,11 @@
   font-size: 18px;
 }
 
+*::selection {
+  background: #fff;
+  color: #000;
+}
+
 body {
   background: linear-gradient(45deg, #281934, #9477c9);
   background-position: center center;
@@ -18,15 +23,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lilita One', cursive;
-  font-weight: 300;
-  text-align: center;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-h1 { font-size: 48px; }
-h2 { font-size: 36px; }
-h3 { font-size: 26px; }
-h4 { font-size: 24px; }
-h5 { font-size: 22px; }
-h6 { font-size: 18px; }
+#root main {
+  flex: 1 1 auto;
+}

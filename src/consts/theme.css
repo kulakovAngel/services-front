@@ -1,5 +1,6 @@
 @value COLOR_PRIMARY: #f1f3f4;
-@value COLOR_SECONDARY: #281934;
+@value COLOR_BACK1: #281934;
+@value COLOR_BACK2: #9477c9;
 @value COLOR_WARNING: yellow;
 @value COLOR_DANGER: red;
 @value COLOR_SUCCESS: green;
@@ -10,3 +11,6 @@
 @value GAP4: 48px;
 
 @value NAV_BUTTON_WIDTH: 48px;
+
+@value BP_MOBILE: 480px;
+@value BP_TABLET: 1024px;

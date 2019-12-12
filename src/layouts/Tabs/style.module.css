@@ -1,0 +1,33 @@
+@value consts: './../../consts/theme.css';
+@value GAP1, GAP2, COLOR_BACK2 from consts;
+
+.tabs {
+  border: 1px solid;
+}
+
+.titles {
+  display: flex;
+  border-bottom: 1px solid;
+}
+
+.title {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: GAP2;
+}
+
+.title:not(:last-child) {
+  border-right: 1px solid;
+}
+
+.titleActive {
+  composes: title;
+  background: COLOR_BACK2;
+}
+
+.content {
+  padding: GAP2;
+}

@@ -5,7 +5,7 @@ import classes from './style.module.css';
 
 function Logotype() {
   return (
-    <div class={ classes.logo }>
+    <div className={ classes.logo }>
       <Link to='/'>&#9854;</Link>
     </div>
   )

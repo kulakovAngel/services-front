@@ -6,7 +6,7 @@ import { setPageTitle } from './../../helpers';
 import classes from './style.module.css';
 
 
-class Auth extends React.Component {
+class LogIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,16 +14,13 @@ class Auth extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.changeLoginField = this.changeLoginField.bind(this);
-    this.changePassField = this.changePassField.bind(this);
+    this.handleChangeInput = this.handleChangeInput.bind(this);
   }
   
-  changeLoginField(e) {
-    this.setState({login: e.target.value});
-  }
-  
-  changePassField(e) {
-    this.setState({password: e.target.value});
+  handleChangeInput(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
   }
   
   handleSubmit(e) {
@@ -33,14 +30,18 @@ class Auth extends React.Component {
       type: 'TRY_LOG_IN',
       payload: {login, password}
     });
+    this.setState({
+      login: '',
+      password: '',
+    });
   }
   
   render() {
     const { login, password } = this.state;
     return (
       <form onSubmit={ this.handleSubmit } className={ classes.form }>
-        <input type='text' placeholder='login' value={ login } onChange={this.changeLoginField} />
-        <input type='text' placeholder='password' value={ password } onChange={this.changePassField} />
+        <input type='text' name='login' placeholder='Login*' value={ login } onChange={this.handleChangeInput} required />
+        <input type='password' name='password' placeholder='Password*' value={ password } onChange={this.handleChangeInput} required />
         <input type='submit' value='Log In' />
       </form>
     )
@@ -51,4 +52,4 @@ const mapStateToProps = state => (
   { auth: state.auth }
 )
 
-export default connect(mapStateToProps)(Auth);
+export default connect(mapStateToProps)(LogIn);

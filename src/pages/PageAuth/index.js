@@ -1,8 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Auth from './../../components/Auth';
+import Tabs from './../../layouts/Tabs';
+import LogIn from './../../components/LogIn';
+import SignIn from './../../components/SignIn';
 import { setPageTitle } from './../../helpers';
+
+import classes from './style.module.css';
 
 
 class PageAuth extends React.Component {
@@ -13,7 +17,10 @@ class PageAuth extends React.Component {
   
   render() {
     return (
-      <Auth />
+      <Tabs className={ classes.tabs }>
+        {{ title: 'LogIn', content: <LogIn /> }}
+        {{ title: 'SignIn', content: <SignIn /> }}
+      </Tabs>
     )
   }
 }

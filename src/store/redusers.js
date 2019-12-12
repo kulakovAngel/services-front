@@ -3,9 +3,6 @@ import { combineReducers } from 'redux';
 const authReduser = (state = {}, action) => {
   switch (action.type) {
     case 'LOG_IN_SUCCESS':
-      console.log(action);
-      return action.payload;
-    case 'SIGN_IN_SUCCESS':
       return action.payload;
     default:
       return state;
@@ -23,13 +20,31 @@ const pageTitleReduser = (state = {}, action) => {
 
 const alertReduser = (state = {}, action) => {
   switch (action.type) {
+      
     case 'LOG_IN_ERROR':
       return {
         type: 'error',
         message: action.message,
       };
-    case 'DEFAULT_ERROR': //
+      
+    case 'SIGN_IN_SUCCESS':
+      return {
+        type: 'success',
+        message: action.payload,
+      }
+      
+    case 'SIGN_IN_ERROR':
+      return {
+        type: 'error',
+        message: action.message,
+      };
+    
+    case 'ERRORS_REMOVE':
+      return {};
+      
+    case 'DEFAULT_ERROR':
       return action.payload;
+      
     default:
       return state;
   }

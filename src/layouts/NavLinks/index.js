@@ -1,18 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import classes from './style.module.css';
+import { PAGES } from './../../consts';
 
-const PAGES = [{path: '/',
-                title: 'Home',
-                exact: true},
-               {path: '/about',
-                title: 'About Company',
-                exact: false},
-               {path: '/auth',
-                title: 'Authorization',
-                exact: false},
-              ];
+import classes from './style.module.css';
 
 
 class NavLinks extends React.Component {

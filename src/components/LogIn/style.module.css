@@ -1,5 +1,5 @@
 @value consts: './../../consts/theme.css';
-@value COLOR_PRIMARY, COLOR_SECONDARY, GAP2, GAP3 from consts;
+@value COLOR_PRIMARY, COLOR_BACK2, GAP2, GAP3 from consts;
 
 .form {
   display: flex;
@@ -24,7 +24,7 @@
 }
 
 .form input:focus {
-  color: COLOR_SECONDARY;
+  color: COLOR_BACK2;
 }
 
 .form input[type='submit'] {
@@ -36,7 +36,7 @@
 .form input::-ms-input-placeholder { color: COLOR_PRIMARY; }
 .form input::placeholder { color: COLOR_PRIMARY; }
 
-.form input:focus::-webkit-input-placeholder { color: COLOR_SECONDARY; }
-.form input:focus:-ms-input-placeholder { color: COLOR_SECONDARY; }
-.form input:focus::-ms-input-placeholder { color: COLOR_SECONDARY; }
-.form input:focus::placeholder { color: COLOR_SECONDARY; }
+.form input:focus::-webkit-input-placeholder { color: COLOR_BACK2; }
+.form input:focus:-ms-input-placeholder { color: COLOR_BACK2; }
+.form input:focus::-ms-input-placeholder { color: COLOR_BACK2; }
+.form input:focus::placeholder { color: COLOR_BACK2; }

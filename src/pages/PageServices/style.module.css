@@ -1,0 +1,25 @@
+@value consts: './../../consts/theme.css';
+@value BP_MOBILE, BP_TABLET from consts;
+
+.tabs {
+  margin: auto;
+}
+
+@media screen and (max-width: BP_MOBILE) {
+  .tabs {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET){
+  .tabs {
+    width: 50%;
+  }
+}
+
+
+@media screen and (min-width: calc(BP_TABLET + 1px)) {
+  .tabs {
+    width: 33%;
+  }
+}

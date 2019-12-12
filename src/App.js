@@ -9,6 +9,7 @@ import {
 import Header from './layouts/Header';
 import Alert from './components/Alert';
 import PageHome from './pages/PageHome';
+import PageServices from './pages/PageServices';
 import PageAbout from './pages/PageAbout';
 import PageAuth from './pages/PageAuth';
 
@@ -24,6 +25,7 @@ function App(props) {
       <main>
         <Switch>
           <Route exact path='/' component={ PageHome } />
+          <Route path='/services' component={ PageServices } />
           <Route path='/about' component={ PageAbout } />
           <Route path='/auth' component={ PageAuth } />
         </Switch>
