@@ -5,14 +5,11 @@ export const logIn = (userInfo) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
     body: JSON.stringify(userInfo)
-  }).
-  then( res => res.json() ).
-  then( data => {
-    if (!data.error) {
+  })
+    .then( res => res.json() )
+    .then( data => {
+      if (data.error) throw data;
       return data;
-    } else {
-      throw data;
-    }
   });
 };
 
@@ -21,13 +18,22 @@ export const signIn = (userInfo) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
     body: JSON.stringify(userInfo)
-  }).
-  then( res => res.json() ).
-  then( data => {
-    if (!data.error) {
+  })
+    .then( res => res.json() )
+    .then( data => {
+      if (data.error) throw data;
       return data.message;
-    } else {
-      throw data;
-    }
   });
 };
+
+export const getServices = () => {
+  return fetch(`${BASE_URL}/services`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+  })
+    .then( res => res.json() )
+    .then( data => {
+      if (data.error) throw data;
+      return data;
+  });
+}

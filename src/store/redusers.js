@@ -9,6 +9,15 @@ const authReduser = (state = {}, action) => {
   }
 }
 
+const servicesReduser = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_ALL_SERVICES':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const pageTitleReduser = (state = {}, action) => {
   switch (action.type) {
     case 'SET_PAGE_TITLE':
@@ -38,7 +47,11 @@ const alertReduser = (state = {}, action) => {
         type: 'error',
         message: action.message,
       };
-    
+    case 'ADD_ALL_SERVICES_ERROR':
+      return {
+        type: 'error',
+        message: action.message,
+      };
     case 'ERRORS_REMOVE':
       return {};
       
@@ -52,6 +65,7 @@ const alertReduser = (state = {}, action) => {
 
 const reducer = combineReducers({
   auth: authReduser,
+  services: servicesReduser,
   pageTitle: pageTitleReduser,
   alert: alertReduser,
 });

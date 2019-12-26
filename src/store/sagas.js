@@ -1,6 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { logIn, signIn } from './../api';
+import {
+  logIn,
+  signIn,
+  getServices
+} from './../api';
 
 function* logInSaga(action) {
   try {
@@ -23,9 +27,20 @@ function* signInSaga(action) {
   }
 }
 
+function* getServicesSaga(action) {
+  try {
+    const services = yield call(getServices);
+    yield put({type: 'ADD_ALL_SERVICES',
+               payload: services});
+  } catch(e) {
+    yield put({type: 'ADD_ALL_SERVICES_ERROR', message: e.error});
+  }
+}
+
 function* saga() {
   yield takeEvery('TRY_LOG_IN', logInSaga);
   yield takeEvery('TRY_SIGN_IN', signInSaga);
+  yield takeEvery('TRY_GET_SERVICES', getServicesSaga);
 }
 
 export default saga;

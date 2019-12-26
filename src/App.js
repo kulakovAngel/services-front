@@ -8,10 +8,8 @@ import {
 
 import Header from './layouts/Header';
 import Alert from './components/Alert';
-import PageHome from './pages/PageHome';
-import PageServices from './pages/PageServices';
-import PageAbout from './pages/PageAbout';
-import PageAuth from './pages/PageAuth';
+
+import { PAGES } from './consts';
 
 import classes from './App.module.css';
 
@@ -24,10 +22,14 @@ function App(props) {
       <Header />
       <main>
         <Switch>
-          <Route exact path='/' component={ PageHome } />
-          <Route path='/services' component={ PageServices } />
-          <Route path='/about' component={ PageAbout } />
-          <Route path='/auth' component={ PageAuth } />
+          {
+            PAGES.map((page) => (
+              page.exact ?
+                <Route exact path={ page.path } component={ page.component } key={ page.path } />
+              :
+                <Route path={ page.path } component={ page.component } key={ page.path } />
+            ))
+          }
         </Switch>
       </main>
       <footer>

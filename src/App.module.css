@@ -1,5 +1,5 @@
 @value consts: './consts/theme.css';
-@value COLOR_PRIMARY, GAP3, GAP4 from consts;
+@value COLOR_PRIMARY, GAP2, GAP3, GAP4 from consts;
 
 
 .App-header {
@@ -20,8 +20,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 48px; margin-top: GAP4; margin-bottom: GAP3}
-h2 { font-size: 36px; }
-h3 { font-size: 26px; }
-h4 { font-size: 24px; }
-h5 { font-size: 22px; }
-h6 { font-size: 18px; }
+h2 { font-size: 36px; margin-top: GAP3; margin-bottom: GAP2}
+h3 { font-size: 32px; }
+h4 { font-size: 28px; }
+h5 { font-size: 26px; }
+h6 { font-size: 24px; }

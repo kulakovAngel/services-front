@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setPageTitle } from './../../helpers';
-
 import classes from './style.module.css';
 
 

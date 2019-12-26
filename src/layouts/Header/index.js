@@ -7,9 +7,6 @@ import classes from './style.module.css';
 
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     const { pageInfo, auth } = this.props;

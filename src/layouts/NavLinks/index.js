@@ -54,7 +54,7 @@ class NavLinks extends React.Component {
     const { isActive } = this.state;
     return (
       <div className={ classes.container }>
-        <a href='#' className={ isActive ? classes.navButtonActive : classes.navButton } onClick={ this.handleClick }>
+        <a href='/' className={ isActive ? classes.navButtonActive : classes.navButton } onClick={ this.handleClick }>
           <span></span>
           <span></span>
           <span></span>
