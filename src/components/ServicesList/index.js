@@ -32,7 +32,6 @@ class ServicesList extends React.Component {
   render() {
     const { services, className: css } = this.props;
     const { screenWidth } = this.state;
-    
     const servicesArr = services.map((service) => (
       <Service content={ service } className={ classes.service } key={ service.id }/>
     ));

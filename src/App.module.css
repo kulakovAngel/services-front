@@ -25,7 +25,6 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   color: COLOR_PRIMARY;
-  overflow: hidden;
 }
 
 a {

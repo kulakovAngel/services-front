@@ -1,0 +1,29 @@
+@value consts: './../../consts/theme.css';
+@value BP_MOBILE, BP_TABLET, GAP2 from consts;
+
+.listWrapper {
+  display: flex;
+}
+
+@media screen and (max-width: BP_TABLET) {
+  .listWrapper {
+    flex-direction: column;
+  }
+}
+
+/*
+@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET){
+
+}
+*/
+
+
+@media screen and (min-width: calc(BP_TABLET + 1px)) {
+  .listWrapper {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .list {
+    flex: 0 0 66%;
+  }
+}
