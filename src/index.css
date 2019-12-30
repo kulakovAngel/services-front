@@ -14,15 +14,6 @@
   color: #000;
 }
 
-body {
-  background: linear-gradient(45deg, #281934, #9477c9);
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-}
-
 #root {
   display: flex;
   flex-direction: column;

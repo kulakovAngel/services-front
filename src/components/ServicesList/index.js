@@ -39,11 +39,9 @@ class ServicesList extends React.Component {
     
     const servisesView = screenWidth > 1024 ? (
       <Slider className={ classes.slider + ' ' + css }>
-      { servicesArr }
+        { servicesArr }
       </Slider>
-    )
-    :
-    (servicesArr);
+    ) : servicesArr;
     
     return servisesView;
   }

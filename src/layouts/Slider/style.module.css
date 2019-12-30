@@ -1,17 +1,22 @@
+@value consts: './../../consts/theme.css';
+@value COLOR_PRIMARY from consts;
+
 @keyframes left {
-  0% {transform: translate(100%, 0)};
-  100% {transform: translate(0, 0)};
+  0% {transform: translate(100%, 0); };
+  100% {transform: translate(0, 0); };
 }
 @keyframes right {
-  0% {transform: translate(-100%, 0)};
-  100% {transform: translate(0, 0)};
+  0% {transform: translate(-100%, 0); };
+  100% {transform: translate(0, 0); };
 }
 
 .animationLeft {
+  border-left: 1px solid COLOR_PRIMARY;
   animation: left 1s;
 }
 
 .animationRight {
+  border-right: 1px solid COLOR_PRIMARY;
   animation: right 1s;
 }
 
@@ -42,7 +47,7 @@
   background: transparent;
   outline: none;
   font-size: 58px;
-  color: white;
+  color: COLOR_PRIMARY;
   cursor: pointer;
 }
 
