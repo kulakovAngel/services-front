@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import classes from './style.module.css';
 
@@ -36,7 +37,14 @@ class LogIn extends React.Component {
   
   render() {
     const { login, password } = this.state;
+    const { auth } = this.props;
+    if (auth.name) {
+      console.log(auth.name);
+      window.history.back()
+    }
+    //window.history.back();
     return (
+      //auth.name ? <Redirect to='/' /> :
       <form onSubmit={ this.handleSubmit } className={ classes.form }>
         <input type='text' name='login' placeholder='Login*' value={ login } onChange={this.handleChangeInput} required />
         <input type='password' name='password' placeholder='Password*' value={ password } onChange={this.handleChangeInput} required />

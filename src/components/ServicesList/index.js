@@ -16,10 +16,10 @@ class ServicesList extends React.Component {
       screenWidth: document.documentElement.clientWidth,
     }
     this.getScreenWidth = this.getScreenWidth.bind(this);
-    window.addEventListener('resize', this.getScreenWidth);
   }
   
   componentDidMount() {
+    window.addEventListener('resize', this.getScreenWidth);
     this.props.dispatch({
       type: 'TRY_GET_SERVICES',
     });
@@ -27,6 +27,10 @@ class ServicesList extends React.Component {
   
   getScreenWidth() {
     this.setState({screenWidth: document.documentElement.clientWidth})
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.getScreenWidth);
   }
   
   render() {
