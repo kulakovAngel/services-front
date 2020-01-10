@@ -35,14 +35,16 @@ class LogIn extends React.Component {
     });
   }
   
+  componentDidUpdate(prevProps) {
+    const { auth } = this.props;
+    if (auth.name !== prevProps.auth.name) {
+      auth.name && window.history.back();
+    }
+  }
+  
   render() {
     const { login, password } = this.state;
-    const { auth } = this.props;
-    if (auth.name) {
-      console.log(auth.name);
-      window.history.back()
-    }
-    //window.history.back();
+    
     return (
       //auth.name ? <Redirect to='/' /> :
       <form onSubmit={ this.handleSubmit } className={ classes.form }>

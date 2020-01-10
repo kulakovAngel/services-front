@@ -7,7 +7,7 @@
     min-height: calc(100vh - 2 * GAP1);
   }
 }
-@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET){
+@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET) {
   body {
     padding: GAP2;
     min-height: calc(100vh - 2 * GAP2);

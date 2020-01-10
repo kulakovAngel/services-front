@@ -23,3 +23,7 @@
 #root main {
   flex: 1 1 auto;
 }
+
+.overflow {
+  overflow: hidden;
+}

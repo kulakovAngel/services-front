@@ -50,6 +50,12 @@ class NavLinks extends React.Component {
     );
   };
   
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.isActive !== prevState.isActive) {
+      document.body.classList.toggle('overflow');
+    }
+  }
+  
   render() {
     const { isActive } = this.state;
     return (
@@ -60,7 +66,7 @@ class NavLinks extends React.Component {
           <span></span>
         </a>
         {
-          this.state.isActive &&
+          isActive &&
           <div className={ classes.linksContainer }>{ this.getNavList() }</div>
         }
       </div>
