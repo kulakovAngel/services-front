@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
+import DatePicker from './../DatePicker';
 import { IMG_URL } from './../../consts';
 //import classes from './style.module.css';
 
@@ -11,7 +12,7 @@ class Service extends React.Component {
     super(props);
     this.handleOrder = this.handleOrder.bind(this);
     this.state = {
-      isOrderInProgress: this.props.auth.name ? true : false,
+      isOrderInProgress: this.props.auth.isAuthorized,
     }
   }
   
@@ -29,10 +30,22 @@ class Service extends React.Component {
     const { content, className, auth } = this.props;
     console.log(auth);
     
-    const order = auth.name ? <div>ORDER CONTAINER</div> : <Redirect push to='auth' />;
+//    const order = auth.isAuthorized ?
+//          <div style={{ position: 'fixed', top: '10px', backgroundColor: 'white', color: 'black', width: '60vw'}}>
+//            <DatePicker />
+//          </div>
+//          :
+//          <Redirect push to='auth' />;
     
+    const order = (
+      <div style={{ position: 'fixed', top: '10px', backgroundColor: 'white', color: 'black', width: '60vw'}}>
+        <DatePicker />
+      </div>
+    )
+          
     return (
       <section key={content.id} className={ className }>
+        {order}
         <Link to={`/services/${content.id}`}>
           <h2>{ content.title }</h2>
         </Link>

@@ -27,7 +27,10 @@ class LogIn extends React.Component {
     const { login, password } = this.state;
     this.props.dispatch({
       type: 'TRY_LOG_IN',
-      payload: {login, password}
+      payload: {
+        login,
+        password
+      }
     });
     this.setState({
       login: '',
@@ -37,8 +40,8 @@ class LogIn extends React.Component {
   
   componentDidUpdate(prevProps) {
     const { auth } = this.props;
-    if (auth.name !== prevProps.auth.name) {
-      auth.name && window.history.back();
+    if (auth.isAuthorized !== prevProps.auth.isAuthorized) {
+      auth.isAuthorized && window.history.back();
     }
   }
   

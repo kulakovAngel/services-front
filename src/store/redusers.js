@@ -1,9 +1,13 @@
 import { combineReducers } from 'redux';
 
-const authReduser = (state = {}, action) => {
+const authReduser = (state = {isAuthorized: false}, action) => {
   switch (action.type) {
     case 'LOG_IN_SUCCESS':
-      return action.payload;
+      const auth = {
+        ...action.payload,
+        isAuthorized: true,
+      }
+      return auth;
     default:
       return state;
   }
