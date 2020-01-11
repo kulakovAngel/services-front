@@ -8,6 +8,7 @@ import {
 
 import Header from './layouts/Header';
 import Alert from './components/Alert';
+import PageSingleService from './pages/PageSingleService';
 
 import { PAGES } from './consts';
 
@@ -22,6 +23,7 @@ function App(props) {
       <Header />
       <main>
         <Switch>
+          <Route path='/services/:id' component={ PageSingleService } />
           {
             PAGES.map((page) => (
               page.exact ?

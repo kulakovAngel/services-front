@@ -4,16 +4,19 @@
 @media screen and (max-width: BP_MOBILE) {
   body {
     padding: GAP1;
+    min-height: calc(100vh - 2 * GAP1);
   }
 }
-@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET){
+@media screen and (min-width: calc(BP_MOBILE + 1px)) and (max-width: BP_TABLET) {
   body {
     padding: GAP2;
+    min-height: calc(100vh - 2 * GAP2);
   }
 }
 @media screen and (min-width: calc(BP_TABLET + 1px)) {
   body {
     padding: GAP3;
+    min-height: calc(100vh - 2 * GAP3);
   }
 }
 
@@ -23,9 +26,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  min-height: 100vh;
   color: COLOR_PRIMARY;
-  overflow: hidden;
 }
 
 a {

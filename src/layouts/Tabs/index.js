@@ -7,7 +7,7 @@ class Tabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: 0,
+      active: props.active ? +props.active : 0,
     }
     this.handleToggleTab = this.handleToggleTab.bind(this);
   }

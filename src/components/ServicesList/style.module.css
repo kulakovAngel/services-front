@@ -1,9 +1,10 @@
 @value consts: './../../consts/theme.css';
-@value COLOR_BACK1, GAP4, GAP2 from consts;
+@value COLOR_BACK1, GAP4, GAP3, GAP2 from consts;
 
 .slider {
   height: 40vh;
-  margin: GAP2 0;
+  margin-top: GAP2;
+  margin-right: calc(0px - GAP3);
 }
 
 .service {
