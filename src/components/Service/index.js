@@ -39,7 +39,9 @@ class Service extends React.Component {
     
     const order = (
       <div style={{ position: 'fixed', top: '10px', backgroundColor: 'white', color: 'black', width: '60vw'}}>
-        <DatePicker />
+        <DatePicker
+          disabled={ ['2020-01-21','2020-01-24','2020-02-06'] }
+          previousDisabled/>
       </div>
     )
           

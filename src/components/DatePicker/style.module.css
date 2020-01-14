@@ -13,13 +13,13 @@
 }
 
 .disabled {
-  
+  background: grey;
 }
 
 .today {
-  
+  background: pink;
 }
 
-.current {
-  
+.selected {
+  background: yellow;
 }
