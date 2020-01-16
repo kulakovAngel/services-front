@@ -1,0 +1,18 @@
+@value consts: './../../consts/theme.css';
+@value COLOR_BACK2, GAP3 from consts;
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: GAP3;
+  background: COLOR_BACK2;
+}

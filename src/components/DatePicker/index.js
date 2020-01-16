@@ -6,8 +6,17 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 const daysNames = ['Mn', 'Tu', 'We', 'Th', 'Fr', 'St', 'Su'];
 
 class DatePicker extends React.Component {
+  static defaultProps = {
+    wrapperClassName: classes.datePicker,
+    arrowClassName: classes.arrow,
+    monthTitleClassName: classes.monthTitle,
+    disabledClassName: classes.disabled,
+    todayClassName: classes.today,
+    selectedClassName: classes.selected,
+  }
   constructor(props) {
     super(props);
+//    this.arrowC = props.classNames.arrow || classes.arrow;
     this.state = {
       selected: {
         day: new Date().getDate(),
@@ -27,13 +36,8 @@ class DatePicker extends React.Component {
     
   }
   
-  getDisabled() {
-    let {
-      disabled,
-    } = this.props;
-    
-    const current = new Date();
-    
+  getDisabled(current) {
+    let { disabled } = this.props;
     disabled = disabled.map(item => {
       //парсим объект даты и фильтруем относительно текущего месяца
       let datesArr = item.split('-');
@@ -44,14 +48,11 @@ class DatePicker extends React.Component {
         +datesArr[2] : null
       );
     }).filter(item => item);
-    return disabled;
+    return(disabled);
   }
   
   setDate(ms) {
-    let {
-      previousDisabled,
-    } = this.props;
-    
+    let { previousDisabled } = this.props;
     const current = new Date(ms);
     
     current.setDate(0);
@@ -59,19 +60,18 @@ class DatePicker extends React.Component {
     current.setDate(1);
     current.setMonth(current.getMonth() + 2);
     current.setDate(0);
+    const disabled = this.getDisabled(current);
     
-    const disabled = this.getDisabled();
-    
-    const allMonthdays = Array.apply(null, {length: current.getDate()}).map((item, i) => ({
+    const allMonthDays = Array.apply(null, {length: current.getDate()}).map((item, i) => ({
       day: i+1,
-      disabled: disabled.includes(i + 1) || (previousDisabled && (new Date(current).setDate(i + 2)) <= new Date()),
+      disabled: disabled.includes(i + 1) || (previousDisabled && (new Date(current).setDate(i + 1)) <= new Date()),
     }))
     current.setDate(1);
     
     return {
       current,
       startWeekDayOfMonth,
-      allMonthdays,
+      allMonthDays,
     }
   }
   
@@ -94,6 +94,7 @@ class DatePicker extends React.Component {
   }
   
   handleSelectDate(e) {
+    if (e.target.classList.contains(classes.disabled)) return;
     const day = +e.target.textContent;
     this.setState(prevState => ({
       selected: {
@@ -101,7 +102,14 @@ class DatePicker extends React.Component {
         month: prevState.current.getMonth(),
         year: prevState.current.getFullYear(),
       }
-    }));
+    }), () => {
+      const {
+        day,
+        month,
+        year,
+      } = this.state.selected;
+      this.props.onClick(`${day}-${month + 1}-${year}`);
+    });
   }
   
   isToday(current, dayOfMonth) {
@@ -115,12 +123,12 @@ class DatePicker extends React.Component {
   
   isSelected(dayOfMonth) {
     const {
-      day,
-      month,
-      year,
-    } = this.state.selected;
-    const {
       current,
+      selected: {
+        day,
+        month,
+        year,
+      }
     } = this.state;
     return (
       day === dayOfMonth &&
@@ -130,38 +138,52 @@ class DatePicker extends React.Component {
   }
   
   getClassName(current, item) {
+    const {
+      disabledClassName,
+      todayClassName,
+      selectedClassName,
+    } = this.props;
     let className = '';
-    className += this.isToday(current, item.day) ? classes.today + ' ' : '';
-    className += this.isSelected(item.day) ? classes.selected + ' ' : '';
-    className += item.disabled ? classes.disabled : '';
-    return className;
-    
+    className += this.isToday(current, item.day) ? todayClassName + ' ' : ' ';
+    className += this.isSelected(item.day) ? selectedClassName + ' ' : ' ';
+    className += item.disabled ? disabledClassName : '';
+    return className.trim();
   }
   
   render() {
     const {
       startWeekDayOfMonth,
-      allMonthdays,
+      allMonthDays,
       current,
     } = this.state;
-    console.log('render');
-    console.log(this.state);
+    const {
+      wrapperClassName,
+      arrowClassName,
+      monthTitleClassName,
+    } = this.props;
+    console.log(this.props);
     return (
-      <div className={ classes.datePicker }>
-        <button onClick={ this.handlePrevious }>&#8592;</button>
-        <div className={ classes.monthTitle }><h5>{ monthNames[current.getMonth()] }</h5></div>
-        <button onClick={ this.handleNext }>&#8594;</button>
+      <div className={ wrapperClassName }>
+        <button onClick={ this.handlePrevious } className={ arrowClassName }>&#8592;</button>
+        <div className={ monthTitleClassName }><h5>{ monthNames[current.getMonth()] }</h5></div>
+        <button onClick={ this.handleNext } className={ arrowClassName }>&#8594;</button>
         { daysNames.map(item => <div key={item}>{ item }</div>) }
-        { allMonthdays.map((item, i) =>(
-          <div
-            className={ this.getClassName(current, item) }
-            style={ !i ? { gridColumnStart: `${startWeekDayOfMonth + 1}` } : null}
-            onClick={ this.handleSelectDate }
-            key={ item.day }
-          >
-            { item.day }
-          </div>
-        )) }
+        { allMonthDays.map((item, i) => {
+          const className = this.getClassName(current, item);
+          const rest = className && {
+            className,
+          }
+          return (
+            <div
+              { ...rest }
+              style={ !i ? { gridColumnStart: `${startWeekDayOfMonth + 1}` } : null}
+              onClick={ this.handleSelectDate }
+              key={ item.day }
+            >
+              { item.day }
+            </div>
+          )
+        }) }
       </div>
     );
   }

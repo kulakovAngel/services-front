@@ -3,17 +3,20 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
 import DatePicker from './../DatePicker';
+import PopUp from './../../layouts/PopUp';
 import { IMG_URL } from './../../consts';
-//import classes from './style.module.css';
+
+import classes from './style.module.css';
 
 
 class Service extends React.Component {
   constructor(props) {
     super(props);
-    this.handleOrder = this.handleOrder.bind(this);
     this.state = {
       isOrderInProgress: this.props.auth.isAuthorized,
     }
+    this.handleOrder = this.handleOrder.bind(this);
+    this.handlePickDate = this.handlePickDate.bind(this);
   }
   
   handleOrder(e) {
@@ -24,6 +27,10 @@ class Service extends React.Component {
     .then( data => {
       console.log(data);
   });
+  }
+  
+  handlePickDate(date) {
+    console.log(date);
   }
   
   render() {
@@ -41,13 +48,21 @@ class Service extends React.Component {
       <div style={{ position: 'fixed', top: '10px', backgroundColor: 'white', color: 'black', width: '60vw'}}>
         <DatePicker
           disabled={ ['2020-01-21','2020-01-24','2020-02-06'] }
-          previousDisabled/>
+          previousDisabled
+        />
       </div>
     )
           
     return (
       <section key={content.id} className={ className }>
-        {order}
+        <PopUp>
+          <DatePicker
+            disabled={ ['2020-01-21','2020-01-24','2020-02-06'] }
+            previousDisabled
+            onClick={ this.handlePickDate }
+            arrowClassName={ classes.a }
+          />
+        </PopUp>
         <Link to={`/services/${content.id}`}>
           <h2>{ content.title }</h2>
         </Link>

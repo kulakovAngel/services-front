@@ -7,7 +7,6 @@ import classes from './style.module.css';
 
 
 class Header extends React.Component {
-  
   render() {
     const { pageInfo, auth } = this.props;
     document.title = 'App - ' + pageInfo.title;

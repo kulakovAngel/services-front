@@ -17,7 +17,7 @@
 @value BP_TABLET: 1024px;
 
 .BACKGROUND_PRIMARY {
-  background-image: linear-gradient(45deg, #281934, #9477c9);
+  background-image: linear-gradient(45deg, COLOR_BACK1, COLOR_BACK2);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
