@@ -5,6 +5,8 @@ import {
   signIn,
   getServices,
   getServiceById,
+  getOrders,
+  postOrder,
 } from './../api';
 
 function* logInSaga(action) {
@@ -28,7 +30,7 @@ function* signInSaga(action) {
   }
 }
 
-function* getServicesSaga(action) {
+function* getServicesSaga() {
   try {
     const services = yield call(getServices);
     yield put({type: 'ADD_ALL_SERVICES',
@@ -41,11 +43,45 @@ function* getServicesSaga(action) {
 function* getServiceByIdSaga(action) {
   try {
     const service = yield call(getServiceById, action.payload);
-    yield put({type: 'ADD_SERVICE_BY_ID',
-               payload: service});
-    console.log(service);
+    yield put({
+      type: 'ADD_SERVICE_BY_ID',
+      payload: service
+    });
   } catch(e) {
     yield put({type: 'ADD_SERVICE_BY_ID_ERROR', message: e.error});
+  }
+}
+
+function* getOrdersSaga() {
+  try {
+    const orders = yield call(getOrders);
+    yield put({
+      type: 'ADD_ALL_ORDERS',
+      payload: orders,
+    });
+  } catch(e) {
+    yield put({type: 'ADD_ALL_ORDERS_ERROR', message: e.error});
+  }
+}
+
+function* postOrderSaga(action) {
+  try {
+    const response = yield call(postOrder, action.payload);
+    yield put({
+      type: 'POST_ORDER_SUCCESS',
+      payload: response,
+    });
+    yield put({
+      type: 'LOG_IN_SUCCESS',
+      payload: {
+        name: action.payload.name,
+        jwt: response.jwt,
+      }});
+  } catch(e) {
+    yield put({
+      type: 'POST_ORDER_ERROR',
+      message: e.error,
+    });
   }
 }
 
@@ -54,6 +90,8 @@ function* saga() {
   yield takeEvery('TRY_SIGN_IN', signInSaga);
   yield takeEvery('TRY_GET_SERVICES', getServicesSaga);
   yield takeEvery('TRY_GET_SERVICE_BY_ID', getServiceByIdSaga);
+  yield takeEvery('TRY_GET_ORDERS', getOrdersSaga);
+  yield takeEvery('TRY_POST_ORDER', postOrderSaga);
 }
 
 export default saga;

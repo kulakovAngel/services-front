@@ -1,3 +1,6 @@
+@value consts: './../../consts/theme.css';
+@value GAP2 from consts;
+
 .datePicker {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -13,6 +16,10 @@
 
 .monthTitle {
   grid-column: 2 / 7;
+}
+
+.cell {
+  padding: GAP2;
 }
 
 .disabled {

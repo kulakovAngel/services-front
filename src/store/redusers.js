@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 const authReduser = (state = {isAuthorized: false}, action) => {
   switch (action.type) {
     case 'LOG_IN_SUCCESS':
+      console.log('action: ',action);
       const auth = {
         ...action.payload,
         isAuthorized: true,
@@ -25,6 +26,15 @@ const servicesReduser = (state = [], action) => {
 const singleServiceReduser = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_SERVICE_BY_ID':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+const ordersReduser = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_ALL_ORDERS':
       return action.payload;
     default:
       return state;
@@ -70,6 +80,7 @@ const reducer = combineReducers({
   auth: authReduser,
   services: servicesReduser,
   service: singleServiceReduser,
+  orders: ordersReduser,
   pageTitle: pageTitleReduser,
   alert: alertReduser,
 });

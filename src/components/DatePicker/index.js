@@ -108,7 +108,7 @@ class DatePicker extends React.Component {
         month,
         year,
       } = this.state.selected;
-      this.props.onClick(`${day}-${month + 1}-${year}`);
+      this.props.onClick(`${year}-${month + 1}-${day}`);
     });
   }
   
@@ -143,7 +143,7 @@ class DatePicker extends React.Component {
       todayClassName,
       selectedClassName,
     } = this.props;
-    let className = '';
+    let className = classes.cell + ' ';
     className += this.isToday(current, item.day) ? todayClassName + ' ' : ' ';
     className += this.isSelected(item.day) ? selectedClassName + ' ' : ' ';
     className += item.disabled ? disabledClassName : '';
@@ -161,7 +161,7 @@ class DatePicker extends React.Component {
       arrowClassName,
       monthTitleClassName,
     } = this.props;
-    console.log(this.props);
+    console.log('disabled: !!!',this.props.disabled)
     return (
       <div className={ wrapperClassName }>
         <button onClick={ this.handlePrevious } className={ arrowClassName }>&#8592;</button>

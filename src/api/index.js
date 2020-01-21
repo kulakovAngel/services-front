@@ -26,7 +26,6 @@ export const signIn = (userInfo) =>
 
 export const getServices = () => 
   fetch(`${BASE_URL}/services`, {
-    method: 'GET',
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
   })
     .then( res => res.json() )
@@ -37,8 +36,29 @@ export const getServices = () =>
 
 export const getServiceById = ({ id }) =>
   fetch(`${BASE_URL}/services/${id}`, {
-    method: 'GET',
     headers: { 'Content-Type': 'application/json;charset=utf-8' },
+  })
+    .then( res => res.json() )
+    .then( data => {
+      if (data.error) throw data;
+      return data;
+  });
+
+export const getOrders = () => 
+  fetch(`${BASE_URL}/orders`, {
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+  })
+    .then( res => res.json() )
+    .then( data => {
+      if (data.error) throw data;
+      return data;
+  });
+
+export const postOrder = (data) =>
+  fetch(`${BASE_URL}/orders`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json;charset=utf-8' },
+    body: JSON.stringify(data),
   })
     .then( res => res.json() )
     .then( data => {
