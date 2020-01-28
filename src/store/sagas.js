@@ -22,9 +22,9 @@ function* logInSaga(action) {
 
 function* signInSaga(action) {
   try {
-    const message = yield call(signIn, action.payload);
+    const response = yield call(signIn, action.payload);
     yield put({type: 'SIGN_IN_SUCCESS',
-               payload: message});
+               payload: response.message});
   } catch(e) {
     yield put({type: 'SIGN_IN_ERROR', message: e.error});
   }
@@ -69,7 +69,7 @@ function* postOrderSaga(action) {
     const response = yield call(postOrder, action.payload);
     yield put({
       type: 'POST_ORDER_SUCCESS',
-      payload: response,
+      payload: response.message,
     });
     yield put({
       type: 'LOG_IN_SUCCESS',
@@ -77,6 +77,9 @@ function* postOrderSaga(action) {
         name: action.payload.name,
         jwt: response.jwt,
       }});
+    yield put({
+      type: 'TRY_GET_ORDERS',
+    });
   } catch(e) {
     yield put({
       type: 'POST_ORDER_ERROR',

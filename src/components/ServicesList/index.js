@@ -16,6 +16,7 @@ class ServicesList extends React.Component {
       screenWidth: document.documentElement.clientWidth,
     }
     this.getScreenWidth = this.getScreenWidth.bind(this);
+    this.handleToogleShowCalendar = this.handleToogleShowCalendar.bind(this);
   }
   
   componentDidMount() {
@@ -33,11 +34,26 @@ class ServicesList extends React.Component {
     window.removeEventListener('resize', this.getScreenWidth);
   }
   
+  handleToogleShowCalendar() {
+    this.props.dispatch({
+      type: 'TOOGLE_SHOW_CALENDAR',
+      payload: {
+        isOrderInProgress: !this.props.userDatePickerState.isOrderInProgress,
+      }
+    });
+  }
+  
   render() {
-    const { services, className: css } = this.props;
+    const { services, className: css, userDatePickerState } = this.props;
     const { screenWidth } = this.state;
     const servicesArr = services.map((service) => (
-      <Service content={ service } className={ classes.service } key={ service.id }/>
+      <Service
+        content={ service }
+        className={ classes.service }
+        key={ service.id }
+        isOrderInProgress={ userDatePickerState.isOrderInProgress }
+        handleToogleShowCalendar={ this.handleToogleShowCalendar }
+        />
     ));
     
     const servisesView = screenWidth > 1024 ? (
@@ -52,5 +68,6 @@ class ServicesList extends React.Component {
 
 const mapStateToProps = state => ({
   services: state.services,
+  userDatePickerState: state.userDatePickerState,
 });
 export default connect(mapStateToProps)(ServicesList);

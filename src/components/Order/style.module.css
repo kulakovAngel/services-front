@@ -1,0 +1,25 @@
+@value consts: './../../consts/theme.css';
+@value GAP2, GAP3, COLOR_DANGER, COLOR_SUCCESS from consts;
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin: GAP3 auto;
+  padding: GAP2;
+  background: transparent;
+  border: 1px solid;
+  color: inherit;
+}
+
+.okButton {
+  composes: button;
+  color: COLOR_SUCCESS;
+}
+
+.cancellButton {
+  composes: button;
+  color: COLOR_DANGER;
+}

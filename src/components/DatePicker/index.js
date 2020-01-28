@@ -35,7 +35,9 @@ class DatePicker extends React.Component {
     this.getDisabled = this.getDisabled.bind(this);
     
   }
+
   
+
   getDisabled(current) {
     let { disabled } = this.props;
     disabled = disabled.map(item => {
@@ -49,6 +51,14 @@ class DatePicker extends React.Component {
       );
     }).filter(item => item);
     return(disabled);
+  }
+  
+  componentDidUpdate(prevProps) {
+    //обновление DISABLED даты
+    if (prevProps.disabled !== this.props.disabled)
+      this.setState(prevState => ({
+        ...this.setDate(prevState.current)
+      }));
   }
   
   setDate(ms) {
@@ -161,7 +171,6 @@ class DatePicker extends React.Component {
       arrowClassName,
       monthTitleClassName,
     } = this.props;
-    console.log('disabled: !!!',this.props.disabled)
     return (
       <div className={ wrapperClassName }>
         <button onClick={ this.handlePrevious } className={ arrowClassName }>&#8592;</button>

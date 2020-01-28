@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 const authReduser = (state = {isAuthorized: false}, action) => {
   switch (action.type) {
     case 'LOG_IN_SUCCESS':
-      console.log('action: ',action);
       const auth = {
         ...action.payload,
         isAuthorized: true,
@@ -50,8 +49,18 @@ const pageTitleReduser = (state = {}, action) => {
   }
 }
 
+const toogleShowCalendarReduser = (state = {isOrderInProgress: false}, action) => {
+  switch (action.type) {
+    case 'TOOGLE_SHOW_CALENDAR':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 const alertReduser = (state = {}, action) => {
   switch (action.type) {
+    case 'POST_ORDER_SUCCESS':  
     case 'SIGN_IN_SUCCESS':
       return {
         type: 'success',
@@ -82,6 +91,7 @@ const reducer = combineReducers({
   service: singleServiceReduser,
   orders: ordersReduser,
   pageTitle: pageTitleReduser,
+  userDatePickerState: toogleShowCalendarReduser,
   alert: alertReduser,
 });
 

@@ -21,7 +21,7 @@ export const signIn = (userInfo) =>
     .then( res => res.json() )
     .then( data => {
       if (data.error) throw data;
-      return data.message;
+      return data;
   });
 
 export const getServices = () => 

@@ -1,0 +1,48 @@
+/*
+@value consts: './../../consts/theme.css';
+@value GAP2, GAP3, COLOR_DANGER, COLOR_SUCCESS from consts;
+*/
+
+.orders {
+  display: grid;
+  grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+}
+
+.orderContainer {
+  display: contents;
+}
+
+.orderDone {
+  composes: orderContainer;
+}
+
+.orderNotDone {
+  composes: orderContainer;
+}
+
+.orderDone > * {
+  background: pink;
+}
+
+.orderNotDone > * {
+  background: lightgreen;
+}
+/*
+
+.button {
+  margin: GAP3 auto;
+  padding: GAP2;
+  background: transparent;
+  border: 1px solid;
+  color: inherit;
+}
+
+.okButton {
+  composes: button;
+  color: COLOR_SUCCESS;
+}
+
+.cancellButton {
+  composes: button;
+  color: COLOR_DANGER;
+}*/
