@@ -17,19 +17,11 @@ class Order extends React.Component {
   
   
   handleOrderDone() {
-    this.props.dispatch({
-      type: 'TRY_PUT_DONE_ORDER',
-    });
+    console.log(this.props);
+    this.props.handleOrderDone(this.props.id);
   }
   
   render() {
-    console.log(typeof this.props.done);
-    const button = Number (this.props.done) ?
-          <div>Completed</div>
-          :
-          <button style={{ color: 'green' }} onClick={ this.handleOrderDone }>
-            V
-          </button>
     return (
       <>
         <div>
@@ -44,7 +36,17 @@ class Order extends React.Component {
         <div>
           { this.props.name }
         </div>
-        { button }
+        {
+          +this.props.done ?
+          <div>Completed</div>
+          :
+          <button
+            className={ classes.buttonDone }
+            onClick={ this.handleOrderDone }
+            >
+            &#9989;
+          </button>
+        }
       </>
     )
   }

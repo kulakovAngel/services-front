@@ -7,6 +7,7 @@ import {
   getServiceById,
   getOrders,
   postOrder,
+  putOrder,
 } from './../api';
 
 function* logInSaga(action) {
@@ -88,6 +89,29 @@ function* postOrderSaga(action) {
   }
 }
 
+function* putOrderSaga(action) {
+  try {
+    const response = yield call(putOrder, action.payload);
+    yield put({
+      type: 'PUT_ORDER_SUCCESS',
+      payload: response.message,
+    });
+    yield put({
+      type: 'NEW_TOKEN',
+      payload: {
+        jwt: response.jwt,
+      }});
+    yield put({
+      type: 'TRY_GET_ORDERS',
+    });
+  } catch(e) {
+    yield put({
+      type: 'PUT_ORDER_ERROR',
+      message: e.error,
+    });
+  }
+}
+
 function* saga() {
   yield takeEvery('TRY_LOG_IN', logInSaga);
   yield takeEvery('TRY_SIGN_IN', signInSaga);
@@ -95,6 +119,7 @@ function* saga() {
   yield takeEvery('TRY_GET_SERVICE_BY_ID', getServiceByIdSaga);
   yield takeEvery('TRY_GET_ORDERS', getOrdersSaga);
   yield takeEvery('TRY_POST_ORDER', postOrderSaga);
+  yield takeEvery('TRY_PUT_ORDER_DONE', putOrderSaga);
 }
 
 export default saga;

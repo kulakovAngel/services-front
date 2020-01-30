@@ -8,6 +8,9 @@ const authReduser = (state = {isAuthorized: false}, action) => {
         isAuthorized: true,
       }
       return auth;
+    case 'NEW_TOKEN':
+      console.log(state, action.payload);
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }
@@ -62,6 +65,7 @@ const alertReduser = (state = {}, action) => {
   switch (action.type) {
     case 'POST_ORDER_SUCCESS':  
     case 'SIGN_IN_SUCCESS':
+    case 'PUT_ORDER_SUCCESS':
       return {
         type: 'success',
         message: action.payload,
@@ -70,6 +74,7 @@ const alertReduser = (state = {}, action) => {
     case 'SIGN_IN_ERROR':
     case 'ADD_ALL_SERVICES_ERROR':
     case 'ADD_SERVICE_BY_ID_ERROR':
+    case 'PUT_ORDER_ERROR':
       return {
         type: 'error',
         message: action.message,

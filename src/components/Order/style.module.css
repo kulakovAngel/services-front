@@ -1,19 +1,19 @@
 @value consts: './../../consts/theme.css';
-@value GAP2, GAP3, COLOR_DANGER, COLOR_SUCCESS from consts;
+@value GAP2, GAP3, COLOR_WARNING, COLOR_SUCCESS from consts;
 
-.buttons {
-  display: flex;
-  justify-content: center;
+.buttonDone {
+  background: COLOR_SUCCESS;
+  border: none;
 }
 
-.button {
-  margin: GAP3 auto;
-  padding: GAP2;
-  background: transparent;
-  border: 1px solid;
-  color: inherit;
+.buttonDone:active {
+  outline: none;
+  opacity: 0.4;
 }
-
+.buttonDone:focus {
+  outline: none;
+}
+/*
 .okButton {
   composes: button;
   color: COLOR_SUCCESS;
@@ -22,4 +22,4 @@
 .cancellButton {
   composes: button;
   color: COLOR_DANGER;
-}
+}*/

@@ -27,6 +27,9 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   color: COLOR_PRIMARY;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
 }
 
 a {
@@ -45,3 +48,9 @@ h3 { font-size: 32px; }
 h4 { font-size: 28px; }
 h5 { font-size: 26px; }
 h6 { font-size: 24px; }
+
+p, form, input {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+}

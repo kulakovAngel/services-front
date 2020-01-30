@@ -21,13 +21,12 @@ class PageAdmin extends React.Component {
   
   render() {
     return (
-      <OrdersList orders={ this.props.orders } />
+      <OrdersList />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  orders: state.orders,
   pageTitle: state.pageTitle,
 });
 
