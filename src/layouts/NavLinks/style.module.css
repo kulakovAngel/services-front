@@ -1,5 +1,5 @@
 @value consts: './../../consts/theme.css';
-@value COLOR_PRIMARY, GAP2, BP_MOBILE, BP_TABLET from consts;
+@value COLOR_PRIMARY, GAP2, BP_MOBILE, BP_TABLET, TRANSITION_TIME from consts;
 
 
 .active {
@@ -22,7 +22,7 @@
   background: COLOR_PRIMARY;
   margin: 6px 0;
   width: 100%;
-  transition: 0.3s;
+  transition: TRANSITION_TIME;
   transform-origin: left center;
 }
 

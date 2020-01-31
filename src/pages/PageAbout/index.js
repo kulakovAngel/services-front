@@ -11,7 +11,6 @@ class PageAbout extends React.Component {
   }
   
   render() {
-    //setPageTitle('About Us', this.props.dispatch);
     return (
       <div>About Page</div>
     );

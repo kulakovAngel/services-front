@@ -22,29 +22,26 @@ class Order extends React.Component {
   }
   
   render() {
+    const {
+      id,
+      date,
+      title,
+      name,
+      done,
+    } = this.props;
     return (
       <>
-        <div>
-          { this.props.id }
-        </div>
-        <div>
-          { this.props.date }
-        </div>
-        <div>
-          { this.props.title }
-        </div>
-        <div>
-          { this.props.name }
-        </div>
+        <div>{ id }</div>
+        <div>{ date }</div>
+        <div>{ title }</div>
+        <div>{ name }</div>
         {
-          +this.props.done ?
-          <div>Completed</div>
-          :
+          +done ? <div>Completed</div> :
           <button
             className={ classes.buttonDone }
             onClick={ this.handleOrderDone }
             >
-            &#9989;
+            &#128504;
           </button>
         }
       </>

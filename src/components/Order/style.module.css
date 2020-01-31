@@ -1,25 +1,23 @@
 @value consts: './../../consts/theme.css';
-@value GAP2, GAP3, COLOR_WARNING, COLOR_SUCCESS from consts;
+@value GAP2, GAP3, COLOR_WARNING, COLOR_SUCCESS, TRANSITION_TIME from consts;
 
 .buttonDone {
-  background: COLOR_SUCCESS;
+  background: COLOR_WARNING;
+  color: COLOR_SUCCESS;
   border: none;
+  font-size: 2rem;
+  transition: TRANSITION_TIME;
+}
+
+.buttonDone:hover {
+  transform: scale(0.95);
 }
 
 .buttonDone:active {
   outline: none;
   opacity: 0.4;
 }
+
 .buttonDone:focus {
   outline: none;
 }
-/*
-.okButton {
-  composes: button;
-  color: COLOR_SUCCESS;
-}
-
-.cancellButton {
-  composes: button;
-  color: COLOR_DANGER;
-}*/

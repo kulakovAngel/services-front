@@ -27,13 +27,13 @@ class Alert extends React.Component {
     return (
       <div className={ alert.type === 'error' ? classes.danger : classes.success }>
         <section>
-          <h5><span onClick={this.handleToogleMinimize}>&#9888;</span> { !isMinimize && alert.type.toUpperCase() }</h5>
+          <h5><span className={ classes.sign } onClick={ this.handleToogleMinimize }>&#9888;</span> { !isMinimize && alert.type.toUpperCase() }</h5>
           {
             !isMinimize && <p>{ alert.message }</p>
           }
         </section>
         {
-          !isMinimize && <span className={classes.closeButton} onClick={this.handleToogleMinimize}>&times;</span>
+          !isMinimize && <span className={ classes.closeButton } onClick={ this.handleToogleMinimize }>&times;</span>
         }
       </div>
     );

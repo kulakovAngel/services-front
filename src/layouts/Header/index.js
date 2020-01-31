@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NavBar from './../NavBar';
+import NavLinks from './../NavLinks';
+import Logotype from './../Logotype';
 
 import classes from './style.module.css';
 
@@ -12,9 +13,12 @@ class Header extends React.Component {
     document.title = 'App - ' + pageInfo.title;
     return (
       <header className={ classes.header }>
-        <NavBar />
-        { auth.name && <div>Hello, { auth.name }!</div> }
-        <h1>{ pageInfo.title }</h1>
+        <NavLinks />
+          <div>
+            { auth.name && <div>Hello, { auth.name }!</div> }
+            <h1>{ pageInfo.title }</h1>
+          </div>
+        <Logotype />
       </header>
     );
   }

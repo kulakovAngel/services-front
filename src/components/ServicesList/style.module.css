@@ -10,9 +10,9 @@
 .service {
   width: 100%;
   height: 100%;
-  background: COLOR_BACK1;
+/*  background: COLOR_BACK1;*/
   padding: GAP2 GAP4;
-/*  composes: BACKGROUND_PRIMARY from consts;*/
+  composes: BACKGROUND_PRIMARY from consts;
 }
 
 .service img {

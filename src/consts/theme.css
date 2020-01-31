@@ -2,8 +2,8 @@
 @value COLOR_SECONDARY: #09d3ac;
 @value COLOR_BACK1: #281934;
 @value COLOR_BACK2: #9477c9;
-@value COLOR_WARNING: yellow;
-@value COLOR_DANGER: red;
+@value COLOR_WARNING: #f2c47b;
+@value COLOR_DANGER: #9f2b42;
 @value COLOR_SUCCESS: #09d3ac;
 
 @value GAP1: 12px;
@@ -15,6 +15,9 @@
 
 @value BP_MOBILE: 480px;
 @value BP_TABLET: 1024px;
+
+@value TRANSITION_TIME: 0.3s;
+@value OPACITY: 0.3;
 
 .BACKGROUND_PRIMARY {
   background-image: linear-gradient(45deg, COLOR_BACK1, COLOR_BACK2);

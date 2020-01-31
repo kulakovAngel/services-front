@@ -10,7 +10,7 @@ import classes from './style.module.css';
 class PageAdmin extends React.Component {
   constructor(props) {
     super(props);
-    setPageTitle('Admin Page', this.props.dispatch);
+    setPageTitle('Admin Panel', this.props.dispatch);
   }
   
   componentDidMount() {

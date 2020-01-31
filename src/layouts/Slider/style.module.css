@@ -11,12 +11,12 @@
 }
 
 .animationLeft {
-  border-left: 1px solid COLOR_PRIMARY;
+/*  border-left: 1px solid COLOR_PRIMARY;*/
   animation: left 1s;
 }
 
 .animationRight {
-  border-right: 1px solid COLOR_PRIMARY;
+/*  border-right: 1px solid COLOR_PRIMARY;*/
   animation: right 1s;
 }
 

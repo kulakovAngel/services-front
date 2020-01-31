@@ -7,11 +7,6 @@ import classes from './style.module.css';
 
 
 class PageSingleService extends React.Component {
-  constructor(props) {
-    super(props);
-    setPageTitle('Single', this.props.dispatch);
-  }
-  
   componentDidMount() {
     this.props.dispatch({
       type: 'TRY_GET_SERVICE_BY_ID',
@@ -19,10 +14,16 @@ class PageSingleService extends React.Component {
         id: this.props.match.params.id,
       }
     });
+    setPageTitle(this.props.service.title, this.props.dispatch);
+  }
+  
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.service.title !== this.props.service.title)
+      setPageTitle(this.props.service.title, this.props.dispatch);
   }
   
   render() {
-    const { service } = this.props
+    const { service } = this.props;
     return (
       <>
         <p>

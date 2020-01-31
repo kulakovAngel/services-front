@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Header from './layouts/Header';
+import Footer from './layouts/Footer';
 import Alert from './components/Alert';
 import PageSingleService from './pages/PageSingleService';
 
@@ -34,9 +35,7 @@ function App(props) {
           }
         </Switch>
       </main>
-      <footer>
-        footer
-      </footer>
+      <Footer />
     </Router>
   )
 }

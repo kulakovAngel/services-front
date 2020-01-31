@@ -24,7 +24,6 @@ class Service extends React.Component {
   
   render() {
     const { content, className } = this.props;
-          
     return (
       <section key={ content.id } className={ className }>
         <Link to={`/services/${content.id}`}>
