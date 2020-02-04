@@ -17,7 +17,6 @@ class Order extends React.Component {
   
   
   handleOrderDone() {
-    console.log(this.props);
     this.props.handleOrderDone(this.props.id);
   }
   

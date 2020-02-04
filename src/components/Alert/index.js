@@ -22,8 +22,6 @@ class Alert extends React.Component {
   render() {
     const { alert } = this.props;
     const { isMinimize } = this.state;
-    console.log('alert:');
-    console.log(alert);
     return (
       <div className={ alert.type === 'error' ? classes.danger : classes.success }>
         <section>
