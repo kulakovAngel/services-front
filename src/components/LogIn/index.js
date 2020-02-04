@@ -46,7 +46,6 @@ class LogIn extends React.Component {
   
   render() {
     const { login, password } = this.state;
-    
     return (
       //auth.name ? <Redirect to='/' /> :
       <form onSubmit={ this.handleSubmit } className={ classes.form }>

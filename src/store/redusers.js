@@ -11,6 +11,8 @@ const authReduser = (state = {isAuthorized: false}, action) => {
     case 'NEW_TOKEN':
       console.log(state, action.payload);
       return Object.assign({}, state, action.payload);
+    case 'TRY_LOG_OUT':
+      return {isAuthorized: false}
     default:
       return state;
   }

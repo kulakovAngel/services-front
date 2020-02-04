@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { PAGES } from './../../consts';
-
 import classes from './style.module.css';
 
 
@@ -33,19 +31,15 @@ class NavLinks extends React.Component {
   getNavList() {
     return (
       <ul>
-      {
-        PAGES.map((item) => (
-          <li key={ item.title }>
-            {
-              item.exact
-              ?
-                <NavLink exact to={ item.path } activeClassName={ classes.active } onClick={ this.handleSelect }>{ item.title }</NavLink>
-              :
-                <NavLink to={ item.path } activeClassName={ classes.active } onClick={ this.handleSelect }>{ item.title }</NavLink>
-            }
-          </li>
-        ))
-      }
+        <li><NavLink exact to='/' activeClassName={ classes.active } onClick={ this.handleSelect }> Home </NavLink></li>
+        <li><NavLink to='/services' activeClassName={ classes.active } onClick={ this.handleSelect }> Our Services </NavLink></li>
+        {
+          !this.props.isAuthorized && <li><NavLink to='/auth' activeClassName={ classes.active } onClick={ this.handleSelect }> Authorization </NavLink></li>
+        }
+        {
+          this.props.rights === '2' && <li><NavLink to='/admin' activeClassName={ classes.active } onClick={ this.handleSelect }> Admin Page </NavLink></li>
+        }
+        <li><NavLink to='/about' activeClassName={ classes.active } onClick={ this.handleSelect }> About Us </NavLink></li>
       </ul>
     );
   };
